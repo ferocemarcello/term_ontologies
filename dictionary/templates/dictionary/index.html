@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>English-German Dictionary</title>
+</head>
+<body>
+    From
+    <select id="languages_from">
+        <option id="english">English</option>
+        <option id="german">German</option>
+    </select>
+    To
+    <select id="languages_to">
+        <option id="german">German</option>
+        <option id="english">English</option>
+    </select>
+    <form action = "searchTerm" method = "get" onsubmit="document.getElementById('language_from').value=document.getElementById('languages_from').value;document.getElementById('language_to').value=document.getElementById('languages_to').value;">
+    <input id="your_name" type="search" name="search_term">
+        <input type="hidden" id="language_from" name="language_from">
+        <input type="hidden" id="language_to" name="language_to">
+    <input type="submit" value="Search Term">
+</form>
+    <br><br>
+    {% if definition %}
+        Definition: {{ definition }}<br><br>
+        Synonims:<ul>
+    {% for synonim in synonims %}
+        <li>{{ synonim }}</li>
+    {% endfor %}
+    </ul><br><br>
+        Translations:<ul>
+    {% for trans in translations %}
+        <li>{{ trans }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
